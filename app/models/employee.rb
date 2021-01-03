@@ -14,4 +14,9 @@ class Employee < ApplicationRecord
     user.save
     self.user_id = user.id
   end
+
+  # instance methods
+  def display_name
+    "#{self.first_name} #{self.last_name}".strip
+  end
 end
