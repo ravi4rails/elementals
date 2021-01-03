@@ -7,13 +7,11 @@ class Employee < ApplicationRecord
   before_create :create_employee_user
 
   # Creating a user for employee before creating a employee
-  # using employee's work email address
+  # using employee's work email address and default password
   def create_employee_user
     email = self.work_email
-    user = User.new(email: self.work_email)
-    # Skipping validation here because here we are creating user without password.
-    # We send an email to employee's work email address to set their own password
-    user.save(validate: false)
+    user = User.new(email: self.work_email, password: 'appsimpact@#123')
+    user.save
     self.user_id = user.id
   end
 end
