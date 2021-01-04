@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
   # using employee's work email address and default password
   def create_employee_user
     email = self.work_email
-    user = User.new(email: self.work_email, password: 'appsimpact@#123')
+    user = User.new(email: self.work_email, password: 'appsimpact@#123', role: 'employee')
     user.save
     self.user_id = user.id
   end
